@@ -1,0 +1,24 @@
+# Just to find non zero minimum values in a matrix row or column
+
+Data<-iris[,1:2]
+distance_matrix<-as.matrix(dist(Data))
+random_point<- sample(1:nrow(Data), 1)
+random_point
+radius<-.25
+######## Take random Row
+current_row<-distance_matrix[random_point,]
+current_row
+current_sorted_row<-sort(current_row)
+current_sorted_row
+row_length<-length(current_sorted_row)
+for(i in 1:row_length){
+  if((current_sorted_row[i]) > 0 & (current_sorted_row[i] < radius)){
+    current_sorted_row[i]<-current_sorted_row[i]
+    
+  }else{
+    current_sorted_row[i]<-NA
+  }
+}
+############
+current_sorted_row <- current_sorted_row[!is.na(current_sorted_row)]
+current_sorted_row
